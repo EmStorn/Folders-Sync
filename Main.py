@@ -43,7 +43,7 @@ def sync(source_folder, replica_folder):
                 new_replica_folder = os.path.join(replica_folder, item)
                 sync(new_source_folder, new_replica_folder)
             else:
-                # Delete and create a new copy of the file, covering the possibility of an updated version with same name
+                # Delete and create a new copy of the file, for files that have been updated
                 files_actions.delete_item(replica_folder, item)
                 files_actions.copy_item(source_folder, replica_folder, item)
                 logging_config.log_update(source_folder, replica_folder, item)
